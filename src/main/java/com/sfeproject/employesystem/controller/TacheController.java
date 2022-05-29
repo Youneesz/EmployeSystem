@@ -17,12 +17,12 @@ public class TacheController {
     private TacheService tacheService;
 
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<Tache> getTaches() {
         return tacheService.getAllTaches();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Tache getTache(@PathVariable int id) {
         return tacheService.getTache(id);
     }

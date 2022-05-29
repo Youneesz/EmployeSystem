@@ -1,7 +1,9 @@
 package com.sfeproject.employesystem.service;
 
+import com.sfeproject.employesystem.model.Conge;
 import com.sfeproject.employesystem.model.DemandeConge;
 
+import com.sfeproject.employesystem.model.Employe;
 import com.sfeproject.employesystem.repository.CongeRepository;
 import com.sfeproject.employesystem.repository.DemandeCongeRepository;
 import com.sfeproject.employesystem.repository.EmployeRepository;
@@ -34,14 +36,15 @@ public class DemandeCongeServiceImpl implements DemandeCongeService{
     }
 
     @Override
-    public DemandeConge addDemandeConge(DemandeConge demandeConge) {
+    public DemandeConge addDemandeConge(DemandeConge demandeConge, int id_emp, int id_conge) {
         for (DemandeConge d: demandeCongeRepository.findAll()) {
             if(d.equals(demandeConge))
                 return null;
         }
-        demandeConge.setConge(congeRepository.findById(demandeConge.getConge().getCodeConge()).orElseThrow(RuntimeException::new));
-        demandeConge.setEmp(employeRepository.findById(demandeConge.getEmp().getCodeEmp()).orElseThrow(RuntimeException::new));
-        demandeConge.setEtat("nouveau");
+        Conge conge = congeRepository.findById(id_conge).orElseThrow(RuntimeException::new);
+        Employe emp = employeRepository.findById(id_emp).orElseThrow(RuntimeException::new);
+        demandeConge.setConge(conge);
+        demandeConge.setEmp(emp);
         return demandeCongeRepository.save(demandeConge);
     }
 
