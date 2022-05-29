@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/conges")
+@CrossOrigin
 public class CongeController {
 
     @Autowired

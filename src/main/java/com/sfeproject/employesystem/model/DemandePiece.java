@@ -16,19 +16,15 @@ public class DemandePiece implements Serializable{
 
     @Id
     @Column(name = "NUM_DEMANDEPIECE", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numDemande;
 
-
-//    @Column(name = "CODE_EMP", nullable = false)
     @ManyToOne
     @JoinColumn(name = "CODE_EMP")
-    //@JsonBackReference(value = "employePieces")
-    @JsonIgnore
-    private Employe employePieces;
-
-//    @Column(name = "CODE_PIECE", nullable = false)
-
     @JsonBackReference(value = "employePieces")
+    private Employe employe;
+
+    @JsonBackReference(value = "demandePieces")
     @ManyToOne
     @JoinColumn(name = "CODE_PIECE")
     private Piece piece;
@@ -55,14 +51,16 @@ public class DemandePiece implements Serializable{
         this.numDemande = numDemande;
     }
 
+    @JsonIgnore
     public Employe getEmployee() {
-        return employePieces;
+        return employe;
     }
 
     public void setEmployee(Employe employee) {
-        this.employePieces = employee;
+        this.employe = employee;
     }
 
+    @JsonIgnore
     public Piece getPiece() {
         return piece;
     }
