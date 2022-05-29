@@ -2,6 +2,7 @@ package com.sfeproject.employesystem.service;
 
 import com.sfeproject.employesystem.model.Piece;
 import com.sfeproject.employesystem.repository.PieceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 @Service
 public class PieceServiceImpl implements PieceService {
 
-
+    @Autowired
     private PieceRepository pieceRepository;
 
 
@@ -40,12 +41,12 @@ public class PieceServiceImpl implements PieceService {
 
     @Override
     public Piece savePiece(Piece piece) {
-        for (Piece p : pieceRepository.findAll()) {
+        /*for (Piece p : pieceRepository.findAll()) {
             if (p.getDescriptionPiece().equals(piece.getDescriptionPiece())
                     && p.getIntitulePiece().equals(piece.getIntitulePiece())) {
                 return null;
             }
-        }
+        }*/
         return pieceRepository.save(piece);
     }
 

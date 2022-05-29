@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/affectations")
+@CrossOrigin
 public class RealiserController {
 
     @Autowired

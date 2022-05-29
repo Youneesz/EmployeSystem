@@ -17,12 +17,12 @@ public class Employe extends Personne implements Serializable {
     @JsonManagedReference(value = "employeconge")
     private Set<DemandeConge> demandes_conges;
 
-    @OneToMany(mappedBy = "employePieces")
+    @OneToMany(mappedBy = "employe")
     @JsonManagedReference(value = "employePieces")
     private List<DemandePiece> demandes_pieces;
 
     @OneToMany(mappedBy = "employeTaches")
-    @JsonManagedReference(value = "employeTaches")
+    //@JsonManagedReference(value = "employeTaches")
     private List<Realiser> taches_affectees;
 
     public Employe() {

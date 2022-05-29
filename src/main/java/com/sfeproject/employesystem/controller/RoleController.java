@@ -10,7 +10,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/roles")
 @CrossOrigin
-// to delete because we won't use it in our project !!!
 public class RoleController {
 
     private final RoleRepository roleRepository;

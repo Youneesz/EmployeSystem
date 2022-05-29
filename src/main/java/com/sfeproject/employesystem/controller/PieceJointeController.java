@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/piecesJointes")
+@CrossOrigin
 public class PieceJointeController {
 
     @Autowired

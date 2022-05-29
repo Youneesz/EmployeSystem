@@ -45,6 +45,7 @@ public class DemandeCongeServiceImpl implements DemandeCongeService{
         Employe emp = employeRepository.findById(id_emp).orElseThrow(RuntimeException::new);
         demandeConge.setConge(conge);
         demandeConge.setEmp(emp);
+        demandeConge.setEtat("nouveau");
         return demandeCongeRepository.save(demandeConge);
     }
 

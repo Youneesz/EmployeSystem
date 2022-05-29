@@ -1,7 +1,10 @@
 package com.sfeproject.employesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "piece")
@@ -13,6 +16,10 @@ public class Piece implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CODE_PIECE", nullable = false)
     private Integer codePiece;
+
+    @OneToMany(mappedBy = "piece")
+    @JsonManagedReference(value = "demandePieces")
+    private Set<DemandePiece> demandePieces;
 
     @Column(name = "INTITULE_PIECE")
     private String intitulePiece;
