@@ -1,15 +1,10 @@
 package com.sfeproject.employesystem.controller;
 
 import com.sfeproject.employesystem.model.Employe;
-import com.sfeproject.employesystem.repository.EmployeRepository;
-import com.sfeproject.employesystem.repository.RoleRepository;
 import com.sfeproject.employesystem.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -20,12 +15,12 @@ public class EmployeController {
     private EmployeeService employeeService;
 
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<Employe> getEmployes() {
         return employeeService.getEmployees();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Employe getEmploye(@PathVariable int id) {
         return employeeService.getEmployee(id);
     }
@@ -40,7 +35,7 @@ public class EmployeController {
         return employeeService.updateEmployee(id, employe);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteEmploye(@PathVariable int id) {
         return employeeService.deleteEmployee(id);
     }

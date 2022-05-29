@@ -14,12 +14,12 @@ public class CongeController {
     @Autowired
     private CongeService congeService;
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<Conge> getConges(){
         return congeService.getConges();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Conge getConge(@PathVariable int id){
         return congeService.getConge(id);
     }

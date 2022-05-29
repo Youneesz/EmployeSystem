@@ -15,12 +15,12 @@ public class PieceController {
     @Autowired
     private PieceService pieceService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Piece getPiece(@PathVariable int id) {
         return pieceService.getPiece(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<Piece> getAll() {
         return pieceService.getPieces();
     }

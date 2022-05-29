@@ -15,12 +15,12 @@ public class RealiserController {
     @Autowired
     private RealiserService realiserService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Realiser getAffectation(@PathVariable int id) {
         return realiserService.getAffectation(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<Realiser> getAffectations() {
         return realiserService.getAllAffectations();
     }
