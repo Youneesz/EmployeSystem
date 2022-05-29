@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/demandesconge")
+@CrossOrigin
 public class DemandeCongeController {
 
     @Autowired

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/actualites")
+@CrossOrigin
 public class ActualiteController {
 
     @Autowired

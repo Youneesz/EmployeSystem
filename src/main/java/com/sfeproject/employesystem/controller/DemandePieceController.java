@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/demandesPiece")
+@RequestMapping("/demandespiece")
+@CrossOrigin
 public class DemandePieceController {
 
     @Autowired
