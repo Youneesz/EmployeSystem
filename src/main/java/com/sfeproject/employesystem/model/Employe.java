@@ -22,7 +22,7 @@ public class Employe extends Personne implements Serializable {
     private List<DemandePiece> demandes_pieces;
 
     @OneToMany(mappedBy = "employeTaches")
-    //@JsonManagedReference(value = "employeTaches")
+    @JsonManagedReference(value = "employeTaches")
     private List<Realiser> taches_affectees;
 
     public Employe() {
