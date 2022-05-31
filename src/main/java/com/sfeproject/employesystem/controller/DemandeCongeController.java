@@ -2,6 +2,7 @@ package com.sfeproject.employesystem.controller;
 
 
 import com.sfeproject.employesystem.model.DemandeConge;
+import com.sfeproject.employesystem.model.Employe;
 import com.sfeproject.employesystem.service.DemandeCongeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,25 +10,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/demandesConge")
+@RequestMapping("/demandesconge")
 public class DemandeCongeController {
 
     @Autowired
     private DemandeCongeService demandeCongeService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public DemandeConge getDemandeConge(@PathVariable int id){
         return demandeCongeService.getDemangeConge(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<DemandeConge> getDemandesConge(){
         return demandeCongeService.getDemandesConge();
     }
 
-    @PostMapping("/add")
-    public DemandeConge addDemandeConge(@RequestBody DemandeConge demandeConge){
-        return demandeCongeService.addDemandeConge(demandeConge);
+    @PostMapping("/add/{id_emp}/{id_conge}")
+    public DemandeConge addDemandeConge(@RequestBody DemandeConge demandeConge, @PathVariable int id_emp, @PathVariable int id_conge){
+        return demandeCongeService.addDemandeConge(demandeConge, id_emp, id_conge);
     }
 
     @PutMapping("/update/{id}")

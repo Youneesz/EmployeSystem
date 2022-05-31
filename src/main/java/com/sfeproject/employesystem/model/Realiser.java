@@ -1,6 +1,7 @@
 package com.sfeproject.employesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,51 +15,38 @@ public class Realiser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
     @Id
     @Column(name = "NUM_AFFECTATION")
     private Integer numAffectation;
 
-    //    @Column(name = "CODE_EMP", nullable = false)
     @ManyToOne
     @JoinColumn(name = "CODE_EMP")
-    @JsonBackReference
-    private Employe employe;
+    @JsonBackReference(value = "employeTaches")
+    private Employe employeTaches;
 
-
-    //    @Column(name = "CODE_TACHE", nullable = false)
     @ManyToOne
     @JoinColumn(name = "CODE_TACHE")
     private Tache tache;
 
-
-    //    @Column(name = "CODE_BUREAU", nullable = false)
     @ManyToOne
     @JoinColumn(name = "CODE_BUREAU")
     private Bureau bureau;
 
-
     @Column(name = "DATE_AFFECTATION")
     private Date dateAffectation;
-
-    public Realiser(Employe employee, Tache tache, Bureau bureau, Integer numAffectation, Date dateAffectation) {
-        this.employe = employee;
-        this.tache = tache;
-        this.bureau = bureau;
-        this.numAffectation = numAffectation;
-        this.dateAffectation = dateAffectation;
-    }
 
     public Realiser() {
     }
 
+    @JsonIgnore
     public Employe getEmployee() {
-        return employe;
+        return employeTaches;
     }
 
     public void setEmployee(Employe employee) {
-        this.employe = employee;
+        this.employeTaches = employee;
     }
+
 
     public Tache getTache() {
         return tache;

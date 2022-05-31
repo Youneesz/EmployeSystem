@@ -16,12 +16,12 @@ public class DemandePieceController {
     @Autowired
     private DemandePieceService demandePieceService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public DemandePiece getDemandePiece(@PathVariable int id){
         return demandePieceService.getDemangePiece(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<DemandePiece> getDemandesPiece(){
         return demandePieceService.getDemandesPiece();
     }

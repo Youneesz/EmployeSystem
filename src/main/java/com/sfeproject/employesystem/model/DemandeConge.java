@@ -1,5 +1,6 @@
 package com.sfeproject.employesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -13,19 +14,21 @@ public class DemandeConge implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "NUM_DEMANDE", nullable = false)
+    @Column(name = "NUM_DEMANDE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numDemande;
 
-    //    @Column(name = "CODE_CONGE", nullable = false)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CODE_CONGE")
+    @JsonBackReference(value = "congeemploye")
     private Conge conge;
 
     //    @Column(name = "CODE_EMP", nullable = false)
-    @ManyToOne()
-    @JsonBackReference
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CODE_EMP")
-    private Employe employe;
+    @JsonBackReference(value = "employeconge")
+    private Employe employeConges;
 
     @Column(name = "DATE_DEMANDE")
     private Date dateDemande;
@@ -48,31 +51,10 @@ public class DemandeConge implements Serializable {
     @Column(name = "MOTIF")
     private String motif;
 
-    public DemandeConge(Integer numDemande, Conge conge, Employe employee, Date dateDemande, Integer exercice, Date dateDebut, Date dateFin, Date dateEtat, String etat, String motif) {
-        this.numDemande = numDemande;
-        this.conge = conge;
-        this.employe = employee;
-        this.dateDemande = dateDemande;
-        this.exercice = exercice;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.dateEtat = dateEtat;
-        this.etat = etat;
-        this.motif = motif;
-    }
-
     public DemandeConge() {
     }
 
-
-    public Integer getNumDemande() {
-        return numDemande;
-    }
-
-    public void setNumDemande(Integer numDemande) {
-        this.numDemande = numDemande;
-    }
-
+    @JsonIgnore
     public Conge getConge() {
         return this.conge;
     }
@@ -81,12 +63,13 @@ public class DemandeConge implements Serializable {
         this.conge = conge;
     }
 
+    @JsonIgnore
     public Employe getEmp() {
-        return employe;
+        return employeConges;
     }
 
     public void setEmp(Employe employee) {
-        this.employe = employee;
+        this.employeConges = employee;
     }
 
     public Date getDateDemande() {

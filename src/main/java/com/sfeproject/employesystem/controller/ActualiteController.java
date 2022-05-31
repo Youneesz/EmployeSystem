@@ -17,12 +17,12 @@ public class ActualiteController {
     @Autowired
     private ActualiteService actualiteService;
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<Actualite> getAll() {
         return actualiteService.getActualites();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public Actualite getActualite(@PathVariable int id) {
         return actualiteService.getActualite(id);
     }

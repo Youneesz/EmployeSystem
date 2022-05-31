@@ -1,6 +1,7 @@
 package com.sfeproject.employesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,18 +15,20 @@ public class DemandePiece implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "NUM_DEMANDE", nullable = false)
+    @Column(name = "NUM_DEMANDEPIECE", nullable = false)
     private Integer numDemande;
 
 
 //    @Column(name = "CODE_EMP", nullable = false)
     @ManyToOne
     @JoinColumn(name = "CODE_EMP")
-    private Employe employe;
+    //@JsonBackReference(value = "employePieces")
+    @JsonIgnore
+    private Employe employePieces;
 
 //    @Column(name = "CODE_PIECE", nullable = false)
 
-    @JsonBackReference
+    @JsonBackReference(value = "employePieces")
     @ManyToOne
     @JoinColumn(name = "CODE_PIECE")
     private Piece piece;
@@ -42,19 +45,7 @@ public class DemandePiece implements Serializable{
     @Column(name = "MOTIF_REFUS")
     private String motifRefus;
 
-    public DemandePiece(Integer numDemande, Employe employee, Piece piece, Date dateDemande, Date dateEtat, String etat, String motifRefus) {
-        this.numDemande = numDemande;
-        this.employe = employee;
-        this.piece = piece;
-        this.dateDemande = dateDemande;
-        this.dateEtat = dateEtat;
-        this.etat = etat;
-        this.motifRefus = motifRefus;
-    }
-
     public DemandePiece() {}
-
-
 
     public Integer getNumDemande() {
         return numDemande;
@@ -65,11 +56,11 @@ public class DemandePiece implements Serializable{
     }
 
     public Employe getEmployee() {
-        return employe;
+        return employePieces;
     }
 
     public void setEmployee(Employe employee) {
-        this.employe = employee;
+        this.employePieces = employee;
     }
 
     public Piece getPiece() {
@@ -110,18 +101,5 @@ public class DemandePiece implements Serializable{
 
     public void setMotifRefus(String motifRefus) {
         this.motifRefus = motifRefus;
-    }
-
-    @Override
-    public String toString() {
-        return "DemandePiece{" +
-                "numDemande=" + numDemande +
-                ", employee=" + employe +
-                ", codePiece=" + piece +
-                ", dateDemande=" + dateDemande +
-                ", dateEtat=" + dateEtat +
-                ", etatDemande='" + etat + '\'' +
-                ", motifRefus='" + motifRefus + '\'' +
-                '}';
     }
 }

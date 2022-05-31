@@ -21,13 +21,13 @@ public class PieceJointeController {
         return pieceJointeService.getPiecesByActualite(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getall")
     public List<PieceJointe> getPieceJointes() {
         return pieceJointeService.getPiecesJointes();
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public PieceJointe getPieceJointe(@PathVariable int id) {
         return pieceJointeService.getPieceJointe(id);
     }

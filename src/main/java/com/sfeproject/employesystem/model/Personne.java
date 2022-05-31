@@ -61,6 +61,8 @@ public class Personne {
     private String cadreFr;
 
 
+
+
     public Personne(Integer codeEmp, Role role, Integer codeSomme, String sexeEmp, Date dateRecrutement, String prenomEmp, String nomEmp, String telEmp, String emailEmp, String adresseEmp, String adresseTravail, String motPasse, String cinEmp, String nomEmpFr, String prenomEmpFr, String cadreFr) {
         this.codeEmp = codeEmp;
         this.role = role;

@@ -1,7 +1,10 @@
 package com.sfeproject.employesystem.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "conge")
@@ -20,6 +23,9 @@ public class Conge implements Serializable {
     @Column(name = "DESCRIPTION_CONGE")
     private String descriptionConge;
 
+    @OneToMany(mappedBy = "conge")
+    @JsonManagedReference(value = "congeemploye")
+    private Set<DemandeConge> demandeConges;
 
     public Integer getCodeConge() {
         return codeConge;
@@ -43,5 +49,13 @@ public class Conge implements Serializable {
 
     public void setDescriptionConge(String descriptionConge) {
         this.descriptionConge = descriptionConge;
+    }
+
+    public Set<DemandeConge> getDemandeConges() {
+        return demandeConges;
+    }
+
+    public void setDemandeConges(Set<DemandeConge> demandeConges) {
+        this.demandeConges = demandeConges;
     }
 }
