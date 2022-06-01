@@ -20,11 +20,6 @@ public class Actualite implements Serializable {
     @Column(name = "CODE_ACTUALITE", nullable = false)
     private Integer codeActualite;
 
-//    @Column(name = "CODE_CAT", nullable = false)
-    @ManyToOne
-    @JoinColumn(name = "CODE_CAT")
-    private Categorie categorie;
-
     @Column(name = "DATE_ACTUALITE")
     private LocalDateTime dateActualite;
 
@@ -33,6 +28,9 @@ public class Actualite implements Serializable {
 
     @Column(name = "intit_actualite")
     private String intitActualite;
+
+    @Column(name = "categorie")
+    private String categorie;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "actualite")
@@ -72,11 +70,11 @@ public class Actualite implements Serializable {
         this.codeActualite = codeActualite;
     }
 
-    public Categorie getCategorie() {
+    public String getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(Categorie categorie) {
+    public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
 

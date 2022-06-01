@@ -2,7 +2,6 @@ package com.sfeproject.employesystem.service;
 
 import com.sfeproject.employesystem.model.Actualite;
 import com.sfeproject.employesystem.repository.ActualiteRepository;
-import com.sfeproject.employesystem.repository.CategorieRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -16,9 +15,6 @@ public class AcualiteServiceImpl implements ActualiteService {
 
     @Autowired
     private ActualiteRepository actualiteRepository;
-
-    @Autowired
-    private CategorieRepository categorieRepository;
 
     @Override
     public Actualite getActualite(int idActualite) {
@@ -39,7 +35,6 @@ public class AcualiteServiceImpl implements ActualiteService {
             }
         }
         actualite.setDateActualite(LocalDateTime.now());
-        actualite.setCategorie(categorieRepository.findById(actualite.getCategorie().getCodeCat()).orElseThrow(RuntimeException::new));
         return actualiteRepository.save(actualite);
     }
 
@@ -53,9 +48,9 @@ public class AcualiteServiceImpl implements ActualiteService {
         }
         Actualite temp = getActualite(id);
         temp.setDateActualite(LocalDateTime.now());
-        temp.setCategorie(categorieRepository.findById(actualite.getCategorie().getCodeCat()).orElseThrow(RuntimeException::new));
         temp.setDescActualite(actualite.getDescActualite());
         temp.setIntitActualite(actualite.getIntitActualite());
+        temp.setCategorie(actualite.getCategorie());
         actualiteRepository.save(temp);
         return temp;
     }
