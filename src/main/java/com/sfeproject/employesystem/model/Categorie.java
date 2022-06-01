@@ -16,7 +16,7 @@ public class Categorie implements Serializable {
     @Column(name = "CODE_CAT", nullable = false)
     private Integer codeCat;
 
-    @Column(name = "INTITULE_CAT")
+    @Column(name = "INTITULE_CAT", nullable = false)
     private String intituleCat;
 
     public Categorie() {}

@@ -17,7 +17,7 @@ public class Conge implements Serializable {
     @Column(name = "CODE_CONGE", nullable = false)
     private Integer codeConge;
 
-    @Column(name = "INTITULE_CONGE")
+    @Column(name = "INTITULE_CONGE", nullable = false)
     private String intituleConge;
 
     @Column(name = "DESCRIPTION_CONGE")

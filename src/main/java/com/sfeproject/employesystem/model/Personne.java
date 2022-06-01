@@ -15,10 +15,10 @@ public class Personne {
     private Integer codeEmp;
 
     @ManyToOne
-    @JoinColumn(name = "CODE_ROLE")
+    @JoinColumn(name = "CODE_ROLE", nullable = false)
     private Role role;
 
-    @Column(name = "CODE_SOMME")
+    @Column(name = "CODE_SOMME", nullable = false)
     private Integer codeSomme;
 
     @Column(name = "SEXE_EMP")
