@@ -3,6 +3,7 @@ package com.sfeproject.employesystem.controller;
 
 import com.sfeproject.employesystem.model.DemandeConge;
 import com.sfeproject.employesystem.model.Employe;
+import com.sfeproject.employesystem.repository.DemandeCongeRepository;
 import com.sfeproject.employesystem.service.DemandeCongeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class DemandeCongeController {
 
     @Autowired
     private DemandeCongeService demandeCongeService;
+    @Autowired
+    private DemandeCongeRepository demandeCongeRepository;
 
     @GetMapping("/get/{id}")
     public DemandeConge getDemandeConge(@PathVariable int id){
@@ -25,6 +28,12 @@ public class DemandeCongeController {
     @GetMapping("/getall")
     public List<DemandeConge> getDemandesConge(){
         return demandeCongeService.getDemandesConge();
+    }
+
+    @GetMapping("/gettypeconge/{id}")
+    public String getTypeCongeByDemande(@PathVariable int id)
+    {
+        return demandeCongeRepository.getTypeCongeByDemandeConge(id);
     }
 
     @PostMapping("/add/{id_emp}/{id_conge}")
