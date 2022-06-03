@@ -2,6 +2,7 @@ package com.sfeproject.employesystem.service;
 
 import com.sfeproject.employesystem.model.Piece;
 import com.sfeproject.employesystem.repository.PieceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class PieceServiceImpl implements PieceService {
 
 
+    @Autowired
     private PieceRepository pieceRepository;
 
 

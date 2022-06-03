@@ -12,6 +12,5 @@ public interface PieceJointeService {
     public List<PieceJointe> getPieceJointes();
     public String deletePieceJointe(int id);
     public PieceJointe updatePieceJointe(int id, PieceJointe pieceJointe);
-
     public List<PieceJointe> getPiecesJointes();
 }
