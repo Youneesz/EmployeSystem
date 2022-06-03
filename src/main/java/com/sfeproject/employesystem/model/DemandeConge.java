@@ -54,6 +54,14 @@ public class DemandeConge implements Serializable {
     public DemandeConge() {
     }
 
+    public Integer getNumDemande() {
+        return numDemande;
+    }
+
+    public void setNumDemande(Integer numDemande) {
+        this.numDemande = numDemande;
+    }
+
     @JsonIgnore
     public Conge getConge() {
         return this.conge;
