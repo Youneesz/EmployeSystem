@@ -8,7 +8,7 @@ public interface DemandePieceService {
 
     public DemandePiece getDemangePiece(int id);
     public List<DemandePiece> getDemandesPiece();
-    public DemandePiece addDemandePiece(DemandePiece demandePiece);
+    public DemandePiece addDemandePiece(DemandePiece demandePiece, int id_emp, int id_piece);
     public DemandePiece updateDemandePiece(int id, DemandePiece demandePiece);
     public String deleteDemangePiece(int id);
 }

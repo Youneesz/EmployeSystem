@@ -59,9 +59,12 @@ public class DemandeCongeServiceImpl implements DemandeCongeService{
         temp.setDateEtat(demandeConge.getDateEtat());
         temp.setConge(demandeConge.getConge());
         temp.setDateDebut(demandeConge.getDateDebut());
-        temp.setmotif(demandeConge.getmotif());
+        temp.setDateFin(demandeConge.getDateFin());
+        temp.setExercice(demandeConge.getExercice());
+        temp.setDateDemande(demandeConge.getDateDemande());
+        temp.setMotif(demandeConge.getMotif());
         temp.setEtat(demandeConge.getEtat());
-        return temp;
+        return demandeCongeRepository.save(temp);
     }
 
     @Override

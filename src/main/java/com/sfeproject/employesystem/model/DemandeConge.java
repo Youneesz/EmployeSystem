@@ -23,8 +23,6 @@ public class DemandeConge implements Serializable {
     @JsonBackReference(value = "congeemploye")
     private Conge conge;
 
-    //    @Column(name = "CODE_EMP", nullable = false)
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CODE_EMP")
     @JsonBackReference(value = "employeconge")
@@ -62,24 +60,6 @@ public class DemandeConge implements Serializable {
         this.numDemande = numDemande;
     }
 
-    @JsonIgnore
-    public Conge getConge() {
-        return this.conge;
-    }
-
-    public void setConge(Conge conge) {
-        this.conge = conge;
-    }
-
-    @JsonIgnore
-    public Employe getEmp() {
-        return employeConges;
-    }
-
-    public void setEmp(Employe employee) {
-        this.employeConges = employee;
-    }
-
     public Date getDateDemande() {
         return dateDemande;
     }
@@ -88,11 +68,11 @@ public class DemandeConge implements Serializable {
         this.dateDemande = dateDemande;
     }
 
-    public Integer getexercice() {
+    public Integer getExercice() {
         return exercice;
     }
 
-    public void setexercice(Integer exercice) {
+    public void setExercice(Integer exercice) {
         this.exercice = exercice;
     }
 
@@ -128,11 +108,29 @@ public class DemandeConge implements Serializable {
         this.etat = etat;
     }
 
-    public String getmotif() {
+    public String getMotif() {
         return motif;
     }
 
-    public void setmotif(String motif) {
+    public void setMotif(String motif) {
         this.motif = motif;
+    }
+
+    @JsonIgnore
+    public Conge getConge() {
+        return this.conge;
+    }
+
+    public void setConge(Conge conge) {
+        this.conge = conge;
+    }
+
+    @JsonIgnore
+    public Employe getEmp() {
+        return employeConges;
+    }
+
+    public void setEmp(Employe employee) {
+        this.employeConges = employee;
     }
 }

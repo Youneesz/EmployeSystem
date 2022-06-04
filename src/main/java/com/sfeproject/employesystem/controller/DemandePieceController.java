@@ -3,6 +3,7 @@ package com.sfeproject.employesystem.controller;
 
 import com.sfeproject.employesystem.model.DemandePiece;
 
+import com.sfeproject.employesystem.repository.DemandePieceRepository;
 import com.sfeproject.employesystem.service.DemandePieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,18 @@ public class DemandePieceController {
 
     @Autowired
     private DemandePieceService demandePieceService;
+    @Autowired
+    private DemandePieceRepository demandePieceRepository;
 
     @GetMapping("/get/{id}")
     public DemandePiece getDemandePiece(@PathVariable int id){
         return demandePieceService.getDemangePiece(id);
+    }
+
+    @GetMapping("/gettypepiece/{id}")
+    public String getTypeCongeByDemande(@PathVariable int id)
+    {
+        return demandePieceRepository.getTypePieceByDemandePiece(id);
     }
 
     @GetMapping("/getall")
@@ -27,9 +36,9 @@ public class DemandePieceController {
         return demandePieceService.getDemandesPiece();
     }
 
-    @PostMapping("/add")
-    public DemandePiece addDemandePiece(@RequestBody DemandePiece demandePiece){
-        return demandePieceService.addDemandePiece(demandePiece);
+    @PostMapping("/add/{id_emp}/{id_piece}")
+    public DemandePiece addDemandePiece(@RequestBody DemandePiece demandePiece, @PathVariable int id_emp, @PathVariable int id_piece){
+        return demandePieceService.addDemandePiece(demandePiece, id_emp, id_piece);
     }
 
     @PutMapping("/update/{id}")

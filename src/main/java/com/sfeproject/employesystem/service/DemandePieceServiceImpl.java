@@ -33,13 +33,13 @@ public class DemandePieceServiceImpl implements DemandePieceService{
     }
 
     @Override
-    public DemandePiece addDemandePiece(DemandePiece demandePiece) {
+    public DemandePiece addDemandePiece(DemandePiece demandePiece, int id_emp, int id_piece) {
         for (DemandePiece d: demandePieceRepository.findAll()) {
             if(d.equals(demandePiece))
                 return null;
         }
-        demandePiece.setPiece(pieceRepository.findById(demandePiece.getPiece().getCodePiece()).orElseThrow(RuntimeException::new));
-        demandePiece.setEmployee(employeRepository.findById(demandePiece.getEmployee().getCodeEmp()).orElseThrow(RuntimeException::new));
+        demandePiece.setPiece(pieceRepository.findById(id_piece).orElseThrow(RuntimeException::new));
+        demandePiece.setEmployee(employeRepository.findById(id_emp).orElseThrow(RuntimeException::new));
         demandePiece.setEtatDemande("nouveau");
         return demandePieceRepository.save(demandePiece);
     }
