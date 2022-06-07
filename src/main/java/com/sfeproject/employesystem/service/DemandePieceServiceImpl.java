@@ -66,6 +66,8 @@ public class DemandePieceServiceImpl implements DemandePieceService{
             archive.setEmploye(temp.getEmployee().getCodeEmp());
             archive.setEtat(temp.getEtat());
             piecesArchiveRepository.save(archive);
+            demandePieceRepository.deleteById(archive.getNumDemande());
+            return null;
         }
         return demandePieceRepository.save(temp);
     }

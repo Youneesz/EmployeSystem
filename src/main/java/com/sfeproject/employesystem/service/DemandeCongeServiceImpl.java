@@ -81,6 +81,8 @@ public class DemandeCongeServiceImpl implements DemandeCongeService{
             archive.setExercice(temp.getExercice());
             archive.setEtat(temp.getEtat());
             congesArchiveRepository.save(archive);
+            demandeCongeRepository.deleteById(archive.getNumDemande());
+            return null;
         }
         return demandeCongeRepository.save(temp);
     }
