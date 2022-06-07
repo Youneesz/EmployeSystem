@@ -47,6 +47,6 @@ public class DemandePieceController {
     }
     @DeleteMapping("/delete/{id}")
     public String deleteDemandePiece(@PathVariable int id){
-        return demandePieceService.deleteDemangePiece(id);
+        return demandePieceService.deleteDemandePiece(id);
     }
 }

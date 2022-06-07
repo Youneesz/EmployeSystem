@@ -35,7 +35,7 @@ public class DemandePiece implements Serializable{
     @Column(name = "DATE_ETAT")
     private Date dateEtat;
 
-    @Column(name = "ETAT_DEMANDE")
+    @Column(name = "etat")
     private String etat;
 
     @Column(name = "MOTIF_REFUS")
@@ -85,11 +85,11 @@ public class DemandePiece implements Serializable{
         this.dateEtat = dateEtat;
     }
 
-    public String getEtatDemande() {
+    public String getEtat() {
         return etat;
     }
 
-    public void setEtatDemande(String etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
 

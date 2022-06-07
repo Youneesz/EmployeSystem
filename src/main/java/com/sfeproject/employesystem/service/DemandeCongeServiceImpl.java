@@ -1,10 +1,12 @@
 package com.sfeproject.employesystem.service;
 
 import com.sfeproject.employesystem.model.Conge;
+import com.sfeproject.employesystem.model.CongesArchive;
 import com.sfeproject.employesystem.model.DemandeConge;
 
 import com.sfeproject.employesystem.model.Employe;
 import com.sfeproject.employesystem.repository.CongeRepository;
+import com.sfeproject.employesystem.repository.CongesArchiveRepository;
 import com.sfeproject.employesystem.repository.DemandeCongeRepository;
 import com.sfeproject.employesystem.repository.EmployeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class DemandeCongeServiceImpl implements DemandeCongeService{
 
     @Autowired
     private EmployeRepository employeRepository;
+
+    @Autowired
+    private CongesArchiveRepository congesArchiveRepository;
 
     @Override
     public DemandeConge getDemangeConge(int id) {
@@ -57,13 +62,26 @@ public class DemandeCongeServiceImpl implements DemandeCongeService{
         }
         DemandeConge temp = demandeCongeRepository.findById(id).orElseThrow(RuntimeException::new);
         temp.setDateEtat(demandeConge.getDateEtat());
-        temp.setConge(demandeConge.getConge());
         temp.setDateDebut(demandeConge.getDateDebut());
         temp.setDateFin(demandeConge.getDateFin());
         temp.setExercice(demandeConge.getExercice());
         temp.setDateDemande(demandeConge.getDateDemande());
         temp.setMotif(demandeConge.getMotif());
         temp.setEtat(demandeConge.getEtat());
+        if (!demandeConge.getEtat().equals("nouveau")) {
+            CongesArchive archive = new CongesArchive();
+            archive.setNumDemande(temp.getNumDemande());
+            archive.setDateDemande(temp.getDateDemande());
+            archive.setDateDebut(temp.getDateDebut());
+            archive.setDateEtat(temp.getDateEtat());
+            archive.setDateFin(temp.getDateFin());
+            archive.setMotif(temp.getMotif());
+            archive.setConge(temp.getConge().getCodeConge());
+            archive.setEmployeConges(temp.getEmp().getCodeEmp());
+            archive.setExercice(temp.getExercice());
+            archive.setEtat(temp.getEtat());
+            congesArchiveRepository.save(archive);
+        }
         return demandeCongeRepository.save(temp);
     }
 
