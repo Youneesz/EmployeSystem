@@ -17,6 +17,7 @@ public class Realiser implements Serializable {
 
     @Id
     @Column(name = "NUM_AFFECTATION")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numAffectation;
 
     @ManyToOne
