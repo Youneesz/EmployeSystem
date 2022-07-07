@@ -2,6 +2,8 @@ package com.sfeproject.employesystem.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "tache")
 public class Tache implements Serializable {
@@ -18,6 +20,9 @@ public class Tache implements Serializable {
 
     @Column(name = "DESCRIPTION_TACHE")
     private String descriptionTache;
+
+    @OneToMany(mappedBy = "tache", cascade = CascadeType.ALL)
+    private List<Realiser> realiser;
 
 
     public Tache( String intituleTache, String descriptionTache) {
@@ -50,4 +55,6 @@ public class Tache implements Serializable {
     public void setDescriptionTache(String descriptionTache) {
         this.descriptionTache = descriptionTache;
     }
+
+
 }

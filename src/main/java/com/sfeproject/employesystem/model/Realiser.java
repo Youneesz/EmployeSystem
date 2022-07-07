@@ -23,7 +23,7 @@ public class Realiser implements Serializable {
     @ManyToOne
     @JoinColumn(name = "CODE_EMP")
     @JsonBackReference(value = "employeTaches")
-    private Employe employeTaches;
+    private Employe employe;
 
     @ManyToOne
     @JoinColumn(name = "CODE_TACHE")
@@ -41,14 +41,14 @@ public class Realiser implements Serializable {
 
     @JsonIgnore
     public Employe getEmployee() {
-        return employeTaches;
+        return employe;
     }
 
     public void setEmployee(Employe employee) {
-        this.employeTaches = employee;
+        this.employe = employee;
     }
 
-
+    @JsonIgnore
     public Tache getTache() {
         return tache;
     }
@@ -57,6 +57,7 @@ public class Realiser implements Serializable {
         this.tache = tache;
     }
 
+    @JsonIgnore
     public Bureau getBureau() {
         return bureau;
     }

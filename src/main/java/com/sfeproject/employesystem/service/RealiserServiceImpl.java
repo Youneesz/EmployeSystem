@@ -37,14 +37,14 @@ public class RealiserServiceImpl implements RealiserService{
     }
 
     @Override
-    public Realiser addAffectation(Realiser affectation) {
+    public Realiser addAffectation(Realiser affectation, int id_emp, int id_bureau, int id_tache) {
         for (Realiser a: realiserRepository.findAll()) {
             if (affectation.equals(a))
                 return null;
         }
-        affectation.setBureau(bureauRepository.findById(affectation.getBureau().getCodeBureau()).orElseThrow(RuntimeException::new));
-        affectation.setTache(tacheRepository.findById(affectation.getTache().getCodeTache()).orElseThrow(RuntimeException::new));
-        affectation.setEmployee(employeRepository.findById(affectation.getEmployee().getCodeEmp()).orElseThrow(RuntimeException::new));
+        affectation.setBureau(bureauRepository.findById(id_bureau).orElseThrow(RuntimeException::new));
+        affectation.setTache(tacheRepository.findById(id_tache).orElseThrow(RuntimeException::new));
+        affectation.setEmployee(employeRepository.findById(id_emp).orElseThrow(RuntimeException::new));
         return realiserRepository.save(affectation);
     }
 
@@ -54,11 +54,10 @@ public class RealiserServiceImpl implements RealiserService{
             if (affectation.equals(a))
                 return null;
         }
-        Realiser temp = getAffectation(id);
-        temp.setBureau(affectation.getBureau());
-        temp.setTache(affectation.getTache());
-        temp.setEmployee(affectation.getEmployee());
-        return realiserRepository.save(affectation);
+        Realiser temp = realiserRepository.findById(id).orElseThrow(RuntimeException::new);
+        System.out.println(temp.toString());
+        temp.setDateAffectation(affectation.getDateAffectation());
+        return realiserRepository.save(temp);
     }
 
     @Override
@@ -66,7 +65,7 @@ public class RealiserServiceImpl implements RealiserService{
 
         try{
             realiserRepository.deleteById(idAffectation);
-            return "Afffectation supprimée avec succès !!";
+            return "Aff ectation supprimée avec succès !!";
         }catch(EmptyResultDataAccessException e){
             return "Cet identifiant n'existe pas !!";
         }

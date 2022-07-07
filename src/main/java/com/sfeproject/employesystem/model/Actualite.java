@@ -33,7 +33,7 @@ public class Actualite implements Serializable {
     private String categorie;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "actualite")
+    @OneToMany(mappedBy = "actualite", cascade = CascadeType.ALL)
     private List<PieceJointe> pieceJointes;
 
     public Actualite() {}

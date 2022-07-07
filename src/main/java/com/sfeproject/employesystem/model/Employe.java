@@ -13,15 +13,15 @@ public class Employe extends Personne implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(mappedBy = "employeConges")
+    @OneToMany(mappedBy = "employeConges", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "employeconge")
     private Set<DemandeConge> demandes_conges;
 
-    @OneToMany(mappedBy = "employe")
+    @OneToMany(mappedBy = "employe", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "employePieces")
     private List<DemandePiece> demandes_pieces;
 
-    @OneToMany(mappedBy = "employeTaches")
+    @OneToMany(mappedBy = "employe", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "employeTaches")
     private List<Realiser> taches_affectees;
 

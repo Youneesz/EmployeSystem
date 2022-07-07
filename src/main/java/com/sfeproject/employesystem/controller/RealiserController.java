@@ -26,9 +26,9 @@ public class RealiserController {
         return realiserService.getAllAffectations();
     }
 
-    @PostMapping("/add")
-    public Realiser addAffectation(@RequestBody Realiser affectation) {
-        return realiserService.addAffectation(affectation);
+    @PostMapping("/add/{id_emp}/{id_bureau}/{id_tache}")
+    public Realiser addAffectation(@RequestBody Realiser affectation, @PathVariable int id_emp, @PathVariable int id_bureau, @PathVariable int id_tache) {
+        return realiserService.addAffectation(affectation, id_emp, id_bureau, id_tache);
     }
 
     @PutMapping("/update/{id}")

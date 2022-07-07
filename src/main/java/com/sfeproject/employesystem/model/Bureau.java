@@ -2,6 +2,7 @@ package com.sfeproject.employesystem.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "bureau")
@@ -21,6 +22,9 @@ public class Bureau implements Serializable {
 
     @Column(name = "DESCRIPTION_BUREAU")
     private String descriptionBureau;
+
+    @OneToMany(mappedBy = "bureau", cascade = CascadeType.ALL)
+    private List<Realiser> realiser;
 
     public Bureau(Integer codeBureau, String intituleBureau, String descriptionBureau) {
         this.codeBureau = codeBureau;

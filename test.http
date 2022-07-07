@@ -1,0 +1,64 @@
+POST http://localhost:5001/employes/add
+Content-Type: application/json
+
+{
+  "codeSomme":12345,
+  "sexeEmp":"M",
+  "dateRecrutement":"2022-03-11",
+  "prenomEmp":"prenom arab",
+  "nomEmp":"nom arab",
+  "telEmp":638382,
+  "emailEmp":"testt@gmail.com",
+  "adresseEmp":"dfsdfsdf",
+  "adresseTravail":"fdsfdsfs",
+  "motPasse":"azeeeeeerty",
+  "cinEmp":"SFSDFSD",
+  "prenomEmpfr":"younes",
+  "nomEmpfr":"sfsfdfsdfs",
+  "cadreFr":"sdfsdff",
+  "role":{
+    "codeRole":2
+  }
+}
+
+###
+GET http://localhost:5001/employes/getall
+Accept: application/json
+
+###
+
+POST http://localhost:5001/actualites/add
+Content-Type: application/json
+
+{
+  "intitActualite":"nv actu",
+  "categorie":"test categoriee",
+  "descActualite":"descriptionn"
+}
+
+###
+
+POST localhost:5001/demandesconge/add/id_emp/id_conge
+content-type: application/json
+
+{
+    "dateDemande": "2022-01-01",
+    "exercice": 2021,
+    "dateDebut": "2022-01-01",
+    "dateFin": "2022-02-01",
+    "dateEtat": "2022-01-02",
+    "etat": "accepte",
+    "motif": null
+}
+
+###
+
+POST localhost:5001/demandespiece/add/id_emp/id_piece
+content-type: application/json
+
+{
+    "dateDemande": "2022-01-01",
+    "dateEtat": "2022-01-02",
+    "etat": "nouveau",
+    "motif": "test motif"
+}

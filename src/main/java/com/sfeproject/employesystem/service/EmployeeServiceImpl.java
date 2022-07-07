@@ -66,6 +66,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         temp.setMotPasse(employee.getMotPasse());
         temp.setPrenomEmp(employee.getPrenomEmp());
         temp.setTelEmp(employee.getTelEmp());
+        temp.setNomEmpfr(employee.getNomEmpfr());
+        temp.setPrenomEmpfr(employee.getPrenomEmpfr());
+        temp.setEmailEmp(employee.getEmailEmp());
+        temp.setRole(employee.getRole());
+        temp.setCadreFr(employee.getCadreFr());
+        temp.setCinEmp(employee.getCinEmp());
+        temp.setCodeSomme(employee.getCodeSomme());
+        temp.setDateRecrutement(employee.getDateRecrutement());
+        temp.setSexeEmp(employee.getSexeEmp());
         return employeRepository.save(temp);
     }
 
